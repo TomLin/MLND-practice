@@ -11983,9 +11983,9 @@ Standard deviation of prices: $165,171.13
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ol>
-<li><strong>RM</strong>: The value of MEDV should increase when the value of RM is higher. <strong>(positive correlated)</strong></li>
-<li><strong>LSTAT</strong>: The value of MEDV should decrease when the value of LSTAT is higher. <strong>(negative correlated)</strong></li>
-<li><strong>PTRATIO</strong>: The value of MEDV should decrease when the value of PTRATIO is higher. <strong>(negative correlated)</strong></li>
+<li><strong>RM</strong>: The value of MEDV should increase when the value of RM is higher. When the house has more rooms, it is bigger and can support larger family to live in. Natually, it will be much more expensive. <strong>(positive correlated)</strong></li>
+<li><strong>LSTAT</strong>: The value of MEDV should decrease when the value of LSTAT is higher. When the neighborhood has higher LSTAT, usually implying higher criminal rates, most people especially the wealthy ones prefer not to move in. Some families will move out at the same time. Hence, no push for the housing prices. <strong>(negative correlated)</strong></li>
+<li><strong>PTRATIO</strong>: The value of MEDV should decrease when the value of PTRATIO is higher. It's a prevalent perception that students will receive better education from teacher when the ratio of students to teachers is low, meaning teachers can pay more attention on each student. Families will prefer to move in these communities, pushing up the housing price in the neighborhood. <strong>(negative correlated)</strong></li>
 </ol>
 
 </div>
@@ -12214,9 +12214,8 @@ Standard deviation of prices: $165,171.13
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Spliting the data set into training and testing substes allows us to build up the model based only on the training subset and validate the model only on the testing subset.</p>
-<p>By validating the model by testing subset, we can tell if the model is overfitted or underfitted, which leads to poor generalization for predictions in real-world cases.</p>
-<p>Therefore, necessary tweaks on the model can be implemented.</p>
+<p>Spliting the data set into training and testing substes allows us to build up the model based only on the training subset and access the performance of the model only on the testing subset.</p>
+<p>Regard to address issue of underfitting and overfitting, we could implement a second split on training data set into sub-training and validation data set. The validation data set will help us measure the degree of generalization, telling if it is an adequate model specification.</p>
 
 </div>
 </div>
@@ -13853,8 +13852,8 @@ EjOU9EREJGYo6YmISMxQ0hMRkZjx//ylHp7Oj+2mAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ol>
-<li>Most of the time, we will try to find tune the parameters to improve model's performance. Thanks to the advanced computer computation power, we are able to try every combination of parameters' value in models and compare their performance. Evey combination of parameters' value is called grid, that is where the name grid search is from. </li>
-<li>Following the process above, we will pick up the parameters which result in best validation performance to bulid the model in the end.</li>
+<li>Most of the time, we will try to find tune the parameters to improve model's performance. Thanks to the advanced computer computation power, we are able to try every combination of parameters' value specified by the engineer in model fitting and compare different models' performance using sklearn.model_selection.GridSearchV(). Evey combination of parameters' value is called grid, that is where the name grid search is from. </li>
+<li>Following the process above, we will pick up the parameters which result in best validation performance to bulid the model in the end. By word of validation performance, it refers to accessing measures such as r2 or mean absolute error or even any other user-defined scoring functions, accomplished by the sklearn.metrics.make_scorer() function.</li>
 </ol>
 
 </div>
@@ -13882,7 +13881,7 @@ EjOU9EREJGYo6YmISMxQ0hMRkZjx//ylHp7Oj+2mAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ol>
-<li>K-fold means to divide the whole data set into K parts. In cross-validation, each time we will leave out one part of data set as testing set, and build up the model using the remaining K-1 parts. In each round, we use the testing set to access the performance of that model of the specific round, total of K rounds and K performance scores. Usually the average score is the final performance metric of whole modeling. </li>
+<li>K-fold means to divide the whole training data set into K parts. In cross-validation, each time we will leave out one part of data set as testing set, and build up the model using the remaining K-1 parts. In each round, we use the testing set to access the performance of that model of the specific round, total of K rounds and K performance scores. Usually the average score is the final performance metric of whole modeling. In addition, there are many choices of helper functions to divide the data set into K parts, for example, ShuffleSplit() or KFold(). However sequential divide of data set is the default option of KFold(), which can be changed by the shuffle option on the purpose of randomness.</li>
 <li>Cross-validation alleviates the possiblity that certain subset with its outliers or abnormalities will dominate the modeling and result in a specific model that's solely suitable for the subset only. With cross-validation, we can fully utilize the whole data set to build the model and receive a more accurate performance metric. In the context of grid search, because of the more accurate metric, we will also have a more robust model under each parameter setting. </li>
 </ol>
 
@@ -13920,7 +13919,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;make_scorer&#39;, &#39;DecisionTreeRegressor&#39;, and &#39;GridSearchCV&#39;</span>
@@ -13941,7 +13940,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
     <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
 
     <span class="c1"># TODO: Create a dictionary for the parameter &#39;max_depth&#39; with a range from 1 to 10</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)}</span>
 
     <span class="c1"># TODO: Transform &#39;performance_metric&#39; into a scoring function using &#39;make_scorer&#39; </span>
     <span class="n">scoring_fnc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">performance_metric</span><span class="p">)</span>
