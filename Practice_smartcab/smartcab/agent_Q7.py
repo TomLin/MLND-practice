@@ -44,7 +44,6 @@ class LearningAgent(Agent):
             self.alpha = 0
         else:
             # self.epsilon = self.epsilon - 0.05 # default
-            # self.epsilon = self.epsilon - 0.005 # re-fined
             # self.epsilon = self.alpha**self.t # version01
             # self.epsilon = 1/(self.t**2) # version02
             self.epsilon = math.exp(-self.alpha*self.t) # version03
@@ -89,7 +88,7 @@ class LearningAgent(Agent):
         # Calculate the maximum Q-value of all actions for a given state
 
         maxQ, value = max(self.Q[state].iteritems())
-        
+
         return maxQ
 
 
