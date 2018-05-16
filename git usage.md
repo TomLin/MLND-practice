@@ -13,6 +13,11 @@
 ## Relatively Unimportant Git Command
 * see the remote url: `git remote -v`
 * list all branches on remote repository: `git branch -r` and exit the reading mode: `enter q`
+* revert the file in staging area back to working directory: `git reset HEAD <file_name>`
+* revert to the original commit: `git reset HEAD~1`
+* revert the changed file back to its original version in working directory: `git checkout HEAD <file_name>`
+* `git fetch` and `git pull` both have similar purpose
+
 
 ### Error Message Case01
 
