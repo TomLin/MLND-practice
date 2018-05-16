@@ -12,7 +12,7 @@
 
 ## Relatively Unimportant Git Command
 * see the remote url: `git remote -v`
-
+* list all branches on remote repository: `git branch -r` and exit the reading mode: `enter q`
 
 ### Error Message Case01
 
