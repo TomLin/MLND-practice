@@ -1,1 +1,2 @@
-# Practice_Udacity_Notebook
+# MLND-practice
+Practice repository for MLND from Udacity.
