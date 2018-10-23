@@ -1,2 +1,2 @@
 # MLND-practice
-Practice repository for MLND from Udacity.
+Final project repository for MLND from Udacity.
